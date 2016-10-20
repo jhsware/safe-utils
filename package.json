@@ -1,0 +1,34 @@
+{
+  "name": "safe-utils",
+  "version": "0.1.0",
+  "description": "Defensive programming helper methods that will change your life",
+  "author": {
+    "name": "Sebastian Ware",
+    "email": "sebastian@urbantalk.se",
+    "url": "https://github.com/jhsware"
+  },
+  "contributors": [{
+    "name": "Pontus Nydensten",
+    "email": "pontusn@kth.se" 
+  }],
+  "license": "MIT",
+  "homepage": "https://github.com/jhsware/safe-utils",
+  "bugs": {
+    "url": "https://github.com/jhsware/safe-utils/issues"
+  },
+  "repository" : { 
+      "type" : "git",
+      "url" : "git+https://github.com/jhsware/safe-utils.git"
+  },
+  "main": "./lib.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "expect.js": "~0.3.1",
+    "mocha": "~1.18.2",
+    "mocha-better-spec-reporter": "^1.1.1"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --reporter mocha-better-spec-reporter"
+  }
+}
