@@ -22,7 +22,8 @@ safeGet(() => test.hallo)
 
 ## safeConcat ##
 Concat an arbitrary number of arguments. If you wrap a property accessor in an arrow function, we
-will skip it if it doesn't resolve.
+will skip it if it throws an exception. This is just a convenience, you could achieve the same with safeGet
+and an empty string as default value.
 
 ```
 const {safeConcat} = require('safe-utils')
