@@ -4,7 +4,7 @@ Simple helper methods that lets you access properties without worrying about def
 
 ## safeGet ##
 Wrap your accessor in an arrow function and pass it to safeGet. You get more readable syntax and
-safeGet handles any exception for you, returning profided default value instead.
+safeGet handles any exception for you returning provided default value instead.
 
 ```
 const {safeGet} = require('safe-utils')
