@@ -9,9 +9,11 @@ safeGet handles any exception for you returning provided default value instead.
 ```
 const {safeGet} = require('safe-utils')
 
+var test = undefined
 safeGet(() => test.hallo)
 // returns undefined
 
+var test = undefined
 safeGet(() => test.hallo, 'not found')
 // returns 'not found'
 
@@ -28,6 +30,7 @@ and an empty string as default value.
 ```
 const {safeConcat} = require('safe-utils')
 
+var req = undefined
 safeConcat('/users/', () => req.params.profile.username)
 // returns '/users/'
 
@@ -43,13 +46,16 @@ Join an array into a string with given separator, skipping any items that loosel
 const {safeJoin} = require('safe-utils')
 
 var user = {
-    firstName: 'Sebastian',
+    firstName: 'John',
     lastName: ''
 }
 safeJoin([user.firstName, user.lastName], ' ')
-// returns 'Sebastian'
+// returns 'John'
 
-user.lastName = 'Ware'
+var user = {
+    firstName: 'John',
+    lastName: 'Doodle'
+}
 safeJoin([user.firstName, user.lastName], ' ')
-// returns 'Sebastian Ware'
+// returns 'John Doodle'
 ```
