@@ -18,7 +18,7 @@ module.exports = {
  */
 function _safeGet (func, defaultValue) {
   try {
-    return func.call()
+    return func.call() || defaultValue
   } catch (e) {
     return defaultValue
   }
