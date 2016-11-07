@@ -6,7 +6,7 @@ Simple helper methods that lets you access properties without worrying about def
 Wrap your accessor in an arrow function and pass it to safeGet. You get more readable syntax and
 safeGet handles any exception for you returning provided default value instead.
 
-```
+```JavaScript
 const {safeGet} = require('safe-utils')
 
 var test = undefined
@@ -28,7 +28,7 @@ Deprecated, use safeJoin instead
 ## safeJoin ##
 Join an array into a string with given separator, skipping any items that loosely equals (==) undefined.
 
-```
+```JavaScript
 const {safeJoin} = require('safe-utils')
 
 var user = {
