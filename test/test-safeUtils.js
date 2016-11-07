@@ -30,3 +30,26 @@ describe('safeGet', function () {
       expect(outp).to.be(1)
   })
 })
+
+describe('safeJoin', function () {
+  it('returns empty string when passed undefined', function () {
+      const inp = undefined
+      const outp = safeJoin([undefined, undefined], ' ')
+      expect(outp).to.equal('')
+  })
+
+  it('returns string with separator', function () {
+      const outp = safeJoin(['First', 'Second'], ' ')
+      expect(outp).to.equal('First Second')
+  })
+
+  it('returns string with separator when passed function', function () {
+      const outp = safeJoin([() => 'First', 'Second'], ' ')
+      expect(outp).to.equal('First Second')
+  })
+
+  it('can handle error in passed function', function () {
+      const outp = safeJoin([() => not.existing, 'Second'], ' ')
+      expect(outp).to.equal('Second')
+  })
+})

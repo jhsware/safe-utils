@@ -36,25 +36,26 @@ function _safeGet (func, defaultValue) {
  *
  */
 function _safeConcat () {
-  try {
-    var outp = ''
-    for (var i = 0; i < arguments.length; i++) {
-      outp += typeof arguments[i] === 'function' ? arguments[i].call() : arguments[i]
-    }
-  } catch (e) {
-    return ''
-  }
+  return _safeJoin(arguments, '')
 }
 
 /** @function safeJoin
- * Concatinate a list of strings with separator inbetween.
+ * Join a list of strings or results of functions with separator inbetween.
  * Params that loosely evaluate as false (==) are skipped.
  *
  * @example
  * safeJoin([firstName, lastName], ' ')
+ * safeJoin([() => article.author.firstName, () => article.author.lastName], ' ')
  *
  */
 function _safeJoin (items, separator) {
-  var outp = items.filter((item) => item)
+  var outp = items.map((item) => {
+    if (typeof item === 'function') {
+      try { return item() } catch (e) { return undefined }
+    } else {
+      return item
+    }
+  })
+  outp = outp.filter((item) => item)
   return outp.join(separator)
 }

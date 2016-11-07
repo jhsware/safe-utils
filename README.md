@@ -23,21 +23,7 @@ safeGet(() => test.hallo)
 ```
 
 ## safeConcat ##
-Concat an arbitrary number of arguments. If you wrap a property accessor in an arrow function, we
-will skip it if it throws an exception. This is just a convenience, you could achieve the same with safeGet
-and an empty string as default value.
-
-```
-const {safeConcat} = require('safe-utils')
-
-var req = undefined
-safeConcat('/users/', () => req.params.profile.username)
-// returns '/users/'
-
-var req = {params: { profile: {username: 'hoyce'}}}
-safeConcat('/users/', () => req.params.profile.username)
-// returns '/users/hoyce'
-```
+Deprecated, use safeJoin instead
 
 ## safeJoin ##
 Join an array into a string with given separator, skipping any items that loosely equals (==) undefined.
@@ -58,4 +44,12 @@ var user = {
 }
 safeJoin([user.firstName, user.lastName], ' ')
 // returns 'John Doodle'
+
+// Using safeGet style method calls
+
+safeJoin([() => user.firstName, () => user.lastName], ' ')
+// returns 'John Doodle'
+
+safeJoin([() => not.existing.prop, () => user.lastName], ' ')
+// returns 'Doodle'
 ```
