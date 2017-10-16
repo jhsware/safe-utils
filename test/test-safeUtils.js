@@ -24,6 +24,14 @@ describe('safeGet', function () {
       const outp = safeGet(() => inp.one, 'default')
       expect(outp).to.equal('default')
   })
+  it('returns false if expression evaluates to false', function () {
+    const outp = safeGet(() => false, 'default')
+    expect(outp).to.equal(false)
+  })
+  it('returns empty string if expression evaluates to empty string', function () {
+    const outp = safeGet(() => '', 'default')
+    expect(outp).to.equal('')
+  })
   it('returns actual property value when accessing  nested variable', function () {
       const inp = {test: 1}
       const outp = safeGet(() => inp.test)
