@@ -49,14 +49,24 @@ function _safeConcat () {
  * safeJoin([() => article.author.firstName, () => article.author.lastName], ' ')
  *
  */
-function _safeJoin (items, separator) {
-  var outp = items.map((item) => {
-    if (typeof item === 'function') {
-      try { return item() } catch (e) { return undefined }
-    } else {
-      return item
+function _safeJoin (items, sep) {
+  var o = []
+  
+  for (var i=0; i < items.length; i++) {
+    var fn = items[i]
+    if (typeof fn === 'function') {
+      try {
+        var t = fn()
+        if (t) {
+          o.push(t) 
+        }
+      } catch (e) {
+        // Do nothing
+      }
+    } else if (fn) {
+      o.push(fn)
     }
-  })
-  outp = outp.filter((item) => item)
-  return outp.join(separator)
+  }
+
+  return o.join(sep)
 }
