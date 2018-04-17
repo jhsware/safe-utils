@@ -1,6 +1,7 @@
 'use strict'
 
 module.exports = {
+  safeCatch: _safeCatch,
   safeGet: _safeGet,
   safeConcat: _safeConcat,
   safeJoin: _safeJoin
@@ -69,4 +70,24 @@ function _safeJoin (items, sep) {
   }
 
   return o.join(sep)
+}
+
+/** @function safeCatch
+ * Call a promise and return results and error in a Node style result object
+ * {err, res}
+ *
+ * @example
+ * const {err, res} = await safeCatch(myPromisFunc)(params, to, promiseFunc)
+ *
+ */
+function _safeCatch (promiseFunc) {
+  return () => {
+    return promiseFunc.apply(promiseFunc, arguments)
+      .then((res) => {
+        return Promise.resolve({ err: undefined, res })
+      })
+      .catch((err) => {
+        return Promise.resolve({ err, res: undefined })
+      })
+    }
 }

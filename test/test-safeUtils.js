@@ -7,6 +7,7 @@ const expect = require('expect.js')
 const safeGet = require('../lib').safeGet
 const safeConcat = require('../lib').safeConcat
 const safeJoin = require('../lib').safeJoin
+const safeCatch = require('../lib').safeCatch
 
 describe('safeGet', function () {
   it('returns undefined when accessing undefined single variable', function () {
@@ -61,3 +62,42 @@ describe('safeJoin', function () {
       expect(outp).to.equal('Second')
   })
 })
+
+describe('safeCatch', function () {
+    it('can handle result', async function () {
+        const myPromisFunc = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('ok')
+                }, 10)
+            })
+        }
+        const {err, res} = await safeCatch(myPromisFunc)()
+        expect(res).to.equal('ok')
+        expect(err).to.be(undefined)
+    })
+
+    it('can handle reject', async function () {
+        const myPromisFunc = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    reject('error')
+                }, 10)
+            })
+        }
+        const {err, res} = await safeCatch(myPromisFunc)()
+        expect(res).to.be(undefined)
+        expect(err).to.equal('error')
+    })
+
+    it('can handle throw', async function () {
+        const myPromisFunc = () => {
+            return new Promise((resolve, reject) => {
+                throw new Error('error')
+            })
+        }
+        const {err, res} = await safeCatch(myPromisFunc)()
+        expect(res).to.be(undefined)
+        expect(err.message).to.equal('error')
+    })
+  })
