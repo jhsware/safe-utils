@@ -4,10 +4,9 @@
 // Testing libraries
 const expect = require('expect.js')
 
-const safeGet = require('../lib').safeGet
-const safeConcat = require('../lib').safeConcat
-const safeJoin = require('../lib').safeJoin
-const safeCatch = require('../lib').safeCatch
+const safeGet = require('../dist/cjs/lib').safeGet
+const safeJoin = require('../dist/cjs/lib').safeJoin
+const safeCatch = require('../dist/cjs/lib').safeCatch
 
 describe('safeGet', function () {
   it('returns undefined when accessing undefined single variable', function () {

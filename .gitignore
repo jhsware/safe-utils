@@ -54,3 +54,5 @@ public/js/app/config*.js
 
 # Docker
 
+dist
+package-lock.json
