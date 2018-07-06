@@ -1,10 +1,6 @@
-.DS_Store
-
-# VS Code specific
-.vscode
-
 # Dependency directory for NPM
 node_modules
-
-dist
 package-lock.json
+.babelrc
+.vscode
+test
