@@ -1,6 +1,6 @@
 {
   "name": "safe-utils",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Defensive programming helper methods that will change your life",
   "main": "dist/cjs/lib.js",
   "module": "lib.js",
