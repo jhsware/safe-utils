@@ -1,6 +1,5 @@
 {
   "presets": [
-    ["env", { "modules": "commonjs" }],
-    "stage-2"
+    ["@babel/env", { "modules": "commonjs" }]
   ]
 }
