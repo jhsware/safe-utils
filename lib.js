@@ -49,7 +49,7 @@ export const safeJoin = function (items, sep) {
 }
 
 /** @function safeCatch
- * Call a promise and return results and error in a Node style result object
+ * Call a promise and return result and error in a Node inspired result object
  * {err, res}
  *
  * @example

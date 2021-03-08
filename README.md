@@ -1,4 +1,5 @@
 # safe-utils
+!(https://badgen.net/bundlephobia/minzip/safe-get)
 
 Simple helper methods that lets you access properties without worrying about defensive programming.
 
@@ -52,4 +53,13 @@ safeJoin([() => user.firstName, () => user.lastName], ' ')
 
 safeJoin([() => not.existing.prop, () => user.lastName], ' ')
 // returns 'Doodle'
+```
+
+## safeCatch ##
+Call a promise and return result and error in a Node inspired result object.
+
+When used with await, this helper gives you more readable code by removing the nested catch.
+
+```JavaScript
+const {err, res} = await safeCatch(myPromisFunc)(params, to, promiseFunc)
 ```
