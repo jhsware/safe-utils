@@ -1,5 +1,5 @@
 # safe-utils
-!(https://badgen.net/bundlephobia/minzip/safe-get)
+![](https://badgen.net/bundlephobia/minzip/safe-utils)
 
 Simple helper methods that lets you access properties without worrying about defensive programming.
 
