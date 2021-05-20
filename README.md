@@ -14,7 +14,7 @@ Available from Node 14.0.0.
 const title = page?.title
 ```
 
-You might still want to use safeGet to wrap functional calls to get more readable code in cases where failing the call is an acceptable outcome and you want to supress the error.
+You might still want to use safeGet to wrap function calls to get more readable code in cases where failing the call is an acceptable outcome and you want to supress the error.
 
 Wrap your accessor in an arrow function and pass it to safeGet. You get more readable syntax and safeGet catches any exception for you returning provided default value instead.
 
