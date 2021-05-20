@@ -6,6 +6,16 @@ Simple helper methods that lets you access properties without worrying about def
 This package has been used without issues in production both in Node.js and in browsers (React style apps) for aprox 4 years.
 
 ## safeGet ##
+NOTE: Optional chaining is now available in the ECMAscipt spec https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+This is included in @babel/preset-env via plugin https://babeljs.io/docs/en/babel-plugin-proposal-optional-chaining
+Available from Node 14.0.0.
+
+```JavaScript
+const title = page?.title
+```
+
+You might still want to use safeGet to wrap functional calls to get more readable code in cases where failing the call is an acceptable outcome and you want to supress the error.
+
 Wrap your accessor in an arrow function and pass it to safeGet. You get more readable syntax and safeGet catches any exception for you returning provided default value instead.
 
 NOTE! There is a performane hit when safeGet catches errors, but this hasn't been a problem in actual applications.
